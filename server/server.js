@@ -10,7 +10,7 @@ app.use(express.static(publicPath));
 
 app.use(parser.json());
 
-const mongoDBURI = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://localhost:27017'
+const mongoDBURI = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://localhost:27017';
 
 MongoClient.connect(mongoDBURI)
   .then((client) => {
