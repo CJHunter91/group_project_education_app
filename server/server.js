@@ -11,6 +11,7 @@ app.use(express.static(publicPath));
 app.use(parser.json());
 
 const mongoDBURI = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://localhost:27017';
+const port = process.env.PORT ? process.env.PORT : 3000
 
 MongoClient.connect(mongoDBURI)
   .then((client) => {
@@ -21,6 +22,6 @@ MongoClient.connect(mongoDBURI)
   })
   .catch(console.error);
 
-app.listen(3000, function () {
+app.listen(port, function () {
   console.log(`Listening on port ${ this.address().port }`);
 });
