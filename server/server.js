@@ -10,7 +10,9 @@ app.use(express.static(publicPath));
 
 app.use(parser.json());
 
-MongoClient.connect('mongodb://localhost:27017')
+const mongoDBURI = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://localhost:27017'
+
+MongoClient.connect(mongoDBURI)
   .then((client) => {
     const db = client.db('card_game');
     const cardCollection = db.collection('cards');
